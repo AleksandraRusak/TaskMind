@@ -7,13 +7,11 @@
 
 import SwiftUI
 
-extension Color {
-    static let customBlue = Color(red: 13 / 255, green: 134 / 255, blue: 143 / 255)
-}
 struct ToListButton: View {
     
     let title: String
     let action: () -> Void
+    var buttonColor: Color
     
     var body: some View {
         GeometryReader { geometry in
@@ -22,7 +20,8 @@ struct ToListButton: View {
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(.customBlue)
+                        .foregroundColor(buttonColor)
+                        
                     
                     Text(title)
                         .foregroundColor(.white)
@@ -38,9 +37,11 @@ struct ToListButton: View {
 
     struct  ToListButton_Previews: PreviewProvider {
                    static var previews: some View {
-                       ToListButton(title: "Value") {
+                       ToListButton(title: "Value",
+                                    action: {},
+                                    buttonColor: .blue)
                        }
                    }
-               }
+               
    
 

@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+extension Color {
+    static let myBlue = Color(red: 13 / 255, green: 134 / 255, blue: 143 / 255)
+}
+
 struct LoginView: View {
  @StateObject var viewModel = LoginViewViewModel()
     
@@ -54,13 +58,11 @@ struct LoginView: View {
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding(.top, 5)
                         
-                        ToListButton(title: "Log in"){
-                            viewModel.login()
-                        }
-                        .padding(.top, 15)
-                        .padding(.bottom, 25)
-                        
-                        
+                        ToListButton(title: "Log in", action: {
+                                                    viewModel.login()
+                                                }, buttonColor: Color.myBlue)
+                                                .padding(.top, 15)
+                                                .padding(.bottom, 25)
                     }
               
                     
@@ -69,7 +71,9 @@ struct LoginView: View {
                     VStack {
                         Text("New around here?")
                         NavigationLink("Create an account", destination: SignupView())
+                            .foregroundColor(Color.myBlue)
                     }
+                    
                     .padding(.bottom, 30)
                     
                     Spacer()
@@ -79,6 +83,7 @@ struct LoginView: View {
         }
     }
 }
+
 
 
 struct Login_Previews: PreviewProvider {

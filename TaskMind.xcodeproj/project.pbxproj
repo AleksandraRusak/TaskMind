@@ -35,6 +35,7 @@
 		F282E73B2BE3E25E00407456 /* ToDoListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282E73A2BE3E25E00407456 /* ToDoListViewViewModel.swift */; };
 		F282E73D2BE3E26B00407456 /* NewItemViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282E73C2BE3E26B00407456 /* NewItemViewViewModel.swift */; };
 		F282E73F2BE3E27B00407456 /* ToDoListItemViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282E73E2BE3E27A00407456 /* ToDoListItemViewViewModel.swift */; };
+		F282E7412BE4318F00407456 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282E7402BE4318F00407456 /* Extentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		F282E73A2BE3E25E00407456 /* ToDoListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewViewModel.swift; sourceTree = "<group>"; };
 		F282E73C2BE3E26B00407456 /* NewItemViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemViewViewModel.swift; sourceTree = "<group>"; };
 		F282E73E2BE3E27A00407456 /* ToDoListItemViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItemViewViewModel.swift; sourceTree = "<group>"; };
+		F282E7402BE4318F00407456 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				F2652BAD2BE2D65100527406 /* TaskMindApp.swift */,
 				F2652BB12BE2D65300527406 /* Assets.xcassets */,
 				F282E71A2BE2DDD100407456 /* GoogleService-Info.plist */,
+				F282E7402BE4318F00407456 /* Extentions.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				F282E7232BE3DF1500407456 /* SignupView.swift in Sources */,
 				F282E7292BE3DF5D00407456 /* NewItemView.swift in Sources */,
 				F282E7212BE3DF0400407456 /* LoginView.swift in Sources */,
+				F282E7412BE4318F00407456 /* Extentions.swift in Sources */,
 				F282E7252BE3DF2800407456 /* ProfileView.swift in Sources */,
 				F282E7352BE3E21E00407456 /* LoginViewViewModel.swift in Sources */,
 				F282E72B2BE3DF8500407456 /* ToDoListItemView.swift in Sources */,
