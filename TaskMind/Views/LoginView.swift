@@ -54,16 +54,19 @@ struct LoginView: View {
                             .autocapitalization(.none)
                             .autocorrectionDisabled()
                             .padding(.top, 5)
+                            .listRowSeparator(.hidden)
                         SecureField("Password", text: $viewModel.password)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding(.top, 5)
+                            .listRowSeparator(.hidden)
                         
                         ToListButton(title: "Log in", action: {
                                                     viewModel.login()
                                                 }, buttonColor: Color.myBlue)
                                                 .padding(.top, 15)
                                                 .padding(.bottom, 25)
-                    }
+                    }.scrollContentBackground(.hidden)
+                    
               
                     
                     

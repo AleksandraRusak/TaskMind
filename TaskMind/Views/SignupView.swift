@@ -47,21 +47,24 @@ struct SignupView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .autocorrectionDisabled()
                         .padding(.top, 5)
+                        .listRowSeparator(.hidden)
                     TextField("Email address", text: $viewModel.email)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .autocapitalization(.none)
                         .autocorrectionDisabled()
                         .padding(.top, 5)
+                        .listRowSeparator(.hidden)
                     SecureField("Password", text: $viewModel.password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.top, 5)
+                        .listRowSeparator(.hidden)
 
                     ToListButton(title: "Sign up", action: {
                                             viewModel.register()
                                         }, buttonColor: Color.myGreen)
                     .padding(.top, 15)
                     .padding(.bottom, 25)
-                    }
+                    }.scrollContentBackground(.hidden)
                 }
             .frame(width: geometry.size.width, height: geometry.size.height)
             }
