@@ -134,7 +134,7 @@ struct ContentView: View {
                 .tabItem{
                     Label("Home", systemImage: "house")
                 }
-            CompletedView()
+            CompletedView(userId: viewModel.currentUserId)
                 .tabItem{
                     Label("History", systemImage: "checklist.checked")
                 }
@@ -151,3 +151,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
+// rus@gmail.com
