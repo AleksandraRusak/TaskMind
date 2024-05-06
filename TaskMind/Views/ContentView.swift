@@ -52,7 +52,8 @@ struct ContentView: View {
                             }
                     }.accentColor(.myBlue)
                 } else {
-                    LoginView()
+//                    LoginView()
+                    IntroView()
                 }
                 }
             }.frame(width: geometry.size.width, height: geometry.size.height)

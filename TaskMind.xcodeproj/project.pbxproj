@@ -38,6 +38,11 @@
 		F282E7412BE4318F00407456 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282E7402BE4318F00407456 /* Extentions.swift */; };
 		F282E7432BE8F1AD00407456 /* CompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282E7422BE8F1AD00407456 /* CompletedView.swift */; };
 		F282E7452BE8F48500407456 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282E7442BE8F48500407456 /* ColorExtensions.swift */; };
+		F282E7472BE909BD00407456 /* APIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282E7462BE909BD00407456 /* APIImage.swift */; };
+		F282E7492BE90A0600407456 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282E7482BE90A0600407456 /* ImagePickerView.swift */; };
+		F282E74B2BE90D2E00407456 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282E74A2BE90D2D00407456 /* CarouselView.swift */; };
+		F282E74D2BE90D5100407456 /* CarouselViewChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282E74C2BE90D5100407456 /* CarouselViewChild.swift */; };
+		F282E74F2BE910A200407456 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282E74E2BE910A200407456 /* IntroView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +93,11 @@
 		F282E7402BE4318F00407456 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		F282E7422BE8F1AD00407456 /* CompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedView.swift; sourceTree = "<group>"; };
 		F282E7442BE8F48500407456 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		F282E7462BE909BD00407456 /* APIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIImage.swift; sourceTree = "<group>"; };
+		F282E7482BE90A0600407456 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		F282E74A2BE90D2D00407456 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		F282E74C2BE90D5100407456 /* CarouselViewChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewChild.swift; sourceTree = "<group>"; };
+		F282E74E2BE910A200407456 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +198,10 @@
 				F282E72A2BE3DF8500407456 /* ToDoListItemView.swift */,
 				F282E72C2BE3DFCD00407456 /* ToListButton.swift */,
 				F282E7422BE8F1AD00407456 /* CompletedView.swift */,
+				F282E7482BE90A0600407456 /* ImagePickerView.swift */,
+				F282E74A2BE90D2D00407456 /* CarouselView.swift */,
+				F282E74C2BE90D5100407456 /* CarouselViewChild.swift */,
+				F282E74E2BE910A200407456 /* IntroView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -211,6 +225,7 @@
 			children = (
 				F282E72E2BE3E00D00407456 /* User.swift */,
 				F282E7302BE3E02300407456 /* ToDoListItem.swift */,
+				F282E7462BE909BD00407456 /* APIImage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -368,25 +383,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				F282E7312BE3E02300407456 /* ToDoListItem.swift in Sources */,
+				F282E7492BE90A0600407456 /* ImagePickerView.swift in Sources */,
 				F282E7272BE3DF4A00407456 /* ToDoListView.swift in Sources */,
 				F282E7392BE3E24E00407456 /* ProfileViewViewModel.swift in Sources */,
 				F282E7232BE3DF1500407456 /* SignupView.swift in Sources */,
+				F282E7472BE909BD00407456 /* APIImage.swift in Sources */,
 				F282E7292BE3DF5D00407456 /* NewItemView.swift in Sources */,
 				F282E7212BE3DF0400407456 /* LoginView.swift in Sources */,
 				F282E7412BE4318F00407456 /* Extentions.swift in Sources */,
 				F282E7252BE3DF2800407456 /* ProfileView.swift in Sources */,
 				F282E7352BE3E21E00407456 /* LoginViewViewModel.swift in Sources */,
+				F282E74D2BE90D5100407456 /* CarouselViewChild.swift in Sources */,
 				F282E72B2BE3DF8500407456 /* ToDoListItemView.swift in Sources */,
 				F282E7432BE8F1AD00407456 /* CompletedView.swift in Sources */,
 				F282E72D2BE3DFCD00407456 /* ToListButton.swift in Sources */,
 				F282E73F2BE3E27B00407456 /* ToDoListItemViewViewModel.swift in Sources */,
 				F282E73D2BE3E26B00407456 /* NewItemViewViewModel.swift in Sources */,
+				F282E74F2BE910A200407456 /* IntroView.swift in Sources */,
 				F282E7372BE3E23200407456 /* SignupViewViewModel.swift in Sources */,
 				F2652BB02BE2D65100527406 /* ContentView.swift in Sources */,
 				F282E72F2BE3E00D00407456 /* User.swift in Sources */,
 				F2652BAE2BE2D65100527406 /* TaskMindApp.swift in Sources */,
 				F282E7332BE3E20D00407456 /* ContentViewViewModel.swift in Sources */,
 				F282E73B2BE3E25E00407456 /* ToDoListViewViewModel.swift in Sources */,
+				F282E74B2BE90D2E00407456 /* CarouselView.swift in Sources */,
 				F282E7452BE8F48500407456 /* ColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
