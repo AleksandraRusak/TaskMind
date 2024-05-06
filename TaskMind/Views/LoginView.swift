@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-extension Color {
-    static let myBlue = Color(red: 13 / 255, green: 134 / 255, blue: 143 / 255)
-}
 
 struct LoginView: View {
  @StateObject var viewModel = LoginViewViewModel()

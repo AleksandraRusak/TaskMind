@@ -9,7 +9,6 @@ import Foundation
 
 // This code adds a method to Encodable types that converts them into dictionaries by first turning them into JSON and then converting that JSON into a dictionary.
 
-
 extension Encodable {
     func asDictionary() -> [String: Any] {
         guard let data = try? JSONEncoder().encode(self) else {
