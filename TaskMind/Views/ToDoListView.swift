@@ -138,6 +138,13 @@ struct ToDoListView: View {
             .listStyle(PlainListStyle())
             .navigationTitle("To Do List")
             .searchable(text: $searchText) // Using the searchable modifier
+            .overlay {
+                            if filteredItems.isEmpty && searchText.isEmpty {
+                                Text("No Tasks Yet")
+                            } else if filteredItems.isEmpty {
+                                ContentUnavailableView.search
+                            }
+            }
             .toolbar {
                 Button {
                     editingItem = nil // Reset for adding new item

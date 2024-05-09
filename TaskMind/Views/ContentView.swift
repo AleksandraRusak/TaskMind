@@ -164,9 +164,6 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 
-// rus@gmail.com
-
-
 struct AnimatedTitleView: View {
     let title: String
     let color: Color
@@ -203,3 +200,8 @@ struct AnimatedTitleView: View {
     }
 }
 }
+
+
+
+// rus@gmail.com
+
