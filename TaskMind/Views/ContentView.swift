@@ -82,6 +82,11 @@ struct ContentView: View {
 
     @State var hideSplash = false
     @State private var showIntro = true  // Controls the display of IntroView
+    
+//    @State var show = false
+    let title = "TaskMind"
+    private var initialDelays = [0.0, 0.018, 0.32, 0.35]
+   
 
     var body: some View {
         GeometryReader { geometry in
@@ -101,7 +106,7 @@ struct ContentView: View {
                 }
             }.frame(width: geometry.size.width, height: geometry.size.height) 
         }.onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                 withAnimation {
                     hideSplash = true
                 }
@@ -113,11 +118,17 @@ struct ContentView: View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.all)
             VStack {
-                Text("TaskMind")
-                    .font(.system(size: 60))
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.myBlue)
-                    .padding(.bottom, 50)
+                            ZStack {
+                                AnimatedTitleView(title: title, color: .C_3, initialDelay: initialDelays[3], animationType: .spring(duration: 1))
+                                AnimatedTitleView(title: title, color: .C_2, initialDelay: initialDelays[2], animationType: .spring(duration: 1))
+                                AnimatedTitleView(title: title, color: .C_1, initialDelay: initialDelays[1], animationType: .spring(duration: 1))
+                                AnimatedTitleView(title: title, color: .C_1, initialDelay: initialDelays[1], animationType: .spring)
+                            }
+//                Text("TaskMind")
+//                    .font(.system(size: 60))
+//                    .fontWeight(.bold)
+//                    .foregroundColor(Color.myBlue)
+//                    .padding(.bottom, 50)
                 
                 Image("logo")
                     .resizable()
@@ -154,3 +165,41 @@ struct ContentView_Previews: PreviewProvider {
 
 
 // rus@gmail.com
+
+
+struct AnimatedTitleView: View {
+    let title: String
+    let color: Color
+    let initialDelay: Double
+    let animationType: Animation
+    @State var scall = false
+    @State private var show = false
+    private var delayStep = 0.1
+    init(title: String, color: Color, initialDelay: Double, animationType: Animation) {
+        self.title = title
+        self.color = color
+        self.initialDelay = initialDelay
+        self.animationType = animationType
+    }
+    var body: some View {
+        HStack(spacing: 0) {
+            ForEach(0..<title.count, id: \.self) { index in
+                Text(String(title[title.index(title.startIndex, offsetBy: index)]))
+                    .font (.system(size: 70)) .bold()
+                    .opacity(show ? 1 : 0)
+                    .offset (y: show ? -30 : 30)
+                    .animation(animationType.delay(Double(index) * delayStep + initialDelay), value: show)
+                    .foregroundStyle (color)
+            }
+        }
+        .scaleEffect(scall ? 1.1 : 1)
+        .onAppear(){
+        show.toggle()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            withAnimation {
+                scall.toggle()
+            }
+        }
+    }
+}
+}
