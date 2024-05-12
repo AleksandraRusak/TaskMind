@@ -85,6 +85,17 @@ struct ProfileView: View {
                                     })
                                     .tint(.red)
                                     }
+                            
+                            Section(header: Text("Settings")) {
+                                                Link("Privacy Policy", destination: URL(string: "https://www.freeprivacypolicy.com/live/5bb1a717-6917-4a08-a205-fd905ab23b06")!)
+                                                Link("Terms & Conditions", destination: URL(string: "https://www.freeprivacypolicy.com/live/45d9597b-7392-421a-a9cb-0a7e1444914a")!)
+                                            }
+                            Section {
+                                    Button("Delete account", action: {
+                                   // add action
+                                })
+                                .tint(.red)
+                                }
                             }
                           
                         } else {
