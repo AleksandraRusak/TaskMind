@@ -46,6 +46,7 @@
 		F282E7512BE9754100407456 /* CompletedTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282E7502BE9754100407456 /* CompletedTasksViewModel.swift */; };
 		F282E75E2BF1034000407456 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F282E75D2BF1034000407456 /* FirebaseAnalytics */; };
 		F282E7612BF365B900407456 /* MyLocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282E7602BF365B900407456 /* MyLocalNotification.swift */; };
+		F282E7652BF37B4400407456 /* oppenAppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282E7642BF37B4400407456 /* oppenAppSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		F282E7502BE9754100407456 /* CompletedTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTasksViewModel.swift; sourceTree = "<group>"; };
 		F282E75F2BF1051600407456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F282E7602BF365B900407456 /* MyLocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocalNotification.swift; sourceTree = "<group>"; };
+		F282E7642BF37B4400407456 /* oppenAppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oppenAppSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +251,7 @@
 				F282E7402BE4318F00407456 /* Extentions.swift */,
 				F282E7442BE8F48500407456 /* ColorExtensions.swift */,
 				F282E7602BF365B900407456 /* MyLocalNotification.swift */,
+				F282E7642BF37B4400407456 /* oppenAppSettings.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				F282E72F2BE3E00D00407456 /* User.swift in Sources */,
 				F2652BAE2BE2D65100527406 /* TaskMindApp.swift in Sources */,
 				F282E7332BE3E20D00407456 /* ContentViewViewModel.swift in Sources */,
+				F282E7652BF37B4400407456 /* oppenAppSettings.swift in Sources */,
 				F282E7612BF365B900407456 /* MyLocalNotification.swift in Sources */,
 				F282E73B2BE3E25E00407456 /* ToDoListViewViewModel.swift in Sources */,
 				F282E74B2BE90D2E00407456 /* CarouselView.swift in Sources */,
