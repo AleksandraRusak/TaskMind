@@ -14,10 +14,21 @@ struct ProfileView: View {
     @State private var presentImagePicker = false
     @State private var presentActionScheet = false
     @State private var presentCamera = false
+    @State private var showDeleteAlert = false
+    @Binding var showLoginView: Bool
+
     
     var body: some View {
         GeometryReader { geometry in
             NavigationStack {
+//                extra button to Logout
+//                TODO - fix delete account
+//                TODO - settings to allow notifications
+                Button("Log out", action: {
+                viewModel.logOut()
+            })
+                
+                
                 VStack {
                     if let user = viewModel.user {
                         Group {
@@ -91,14 +102,31 @@ struct ProfileView: View {
                                                 Link("Terms & Conditions", destination: URL(string: "https://www.freeprivacypolicy.com/live/45d9597b-7392-421a-a9cb-0a7e1444914a")!)
                                             }
                             Section {
-                                    Button("Delete account", action: {
-                                   // add action
-                                })
-                                .tint(.red)
-                                }
-                            }
+                                Button("Delete account") {
+                                    showDeleteAlert = true
+                                                                }
+                                                                .tint(.red)
+                                                                .alert("Are you sure you want to delete your account?", isPresented: $showDeleteAlert) {
+                                                                    Button("Delete", role: .destructive) {
+                                                                        Task {
+                                                                            do {
+                                                                                try await viewModel.delete()
+                                                                                showLoginView = true
+                                                                            }
+                                                                                        catch {
+                                                                                        print(error)
+                                                                                                    }
+                                                                                                }
+                                                                    }
+                                                                    Button("Cancel", role: .cancel) { }
+                                                                } message: {
+                                                                    Text("This action cannot be undone.")
+                                                                }
+                                                            }
+                                                        }
                           
-                        } else {
+                        } 
+                    else {
                             Text("Loading Profile...")
                         }
                         
@@ -112,7 +140,10 @@ struct ProfileView: View {
 }
 
 struct ProfileView_Previews: PreviewProvider {
+    @State static var showLoginView = false  // Create a mock state
+
     static var previews: some View {
-        ProfileView()
+        ProfileView(showLoginView: $showLoginView)  // Pass the binding
     }
 }
+

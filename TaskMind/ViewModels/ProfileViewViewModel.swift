@@ -55,6 +55,8 @@ class ProfileViewViewModel: ObservableObject {
         }
     }
     
+    
+    
     // Fetch a random image from an API
     func fetchImageWithCompletion() {
         loader.getImageWithCompletion { [weak self] image, error in
@@ -99,6 +101,31 @@ class ProfileViewViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.imageURL = url
             }
+        }
+    }
+    
+    func delete() async throws {
+        guard let user = Auth.auth().currentUser else {
+            throw NSError(domain: "ProfileViewModel", code: 1, userInfo: [NSLocalizedDescriptionKey: "User not found"])
+        }
+
+        let userId = user.uid // Directly assign since `uid` is non-optional
+
+        let db = Firestore.firestore()
+        let storageRef = Storage.storage().reference().child("profile_images/\(userId).jpg")
+        let userRef = db.collection("users").document(userId)
+
+        do {
+            // Step 1: Delete user data from Firestore
+            try await userRef.delete()
+
+            // Step 2: Delete profile image from Storage
+            try await storageRef.delete()
+
+            // Step 3: Delete the user from Firebase Authentication
+            try await user.delete()
+        } catch {
+            throw error  // Propagate errors to the caller
         }
     }
 }

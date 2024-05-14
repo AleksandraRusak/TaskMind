@@ -82,8 +82,9 @@ struct ContentView: View {
 
     @State var hideSplash = false
     @State private var showIntro = true  // Controls the display of IntroView
+    @State private var showLoginView = false
     
-//    @State var show = false
+    
     let title = "TaskMind"
     private var initialDelays = [0.0, 0.018, 0.32, 0.35]
    
@@ -149,7 +150,8 @@ struct ContentView: View {
                 .tabItem{
                     Label("History", systemImage: "checklist.checked")
                 }
-            ProfileView()
+            //ProfileView()
+            ProfileView(showLoginView: $showLoginView)
                 .tabItem{
                     Label("Profile", systemImage: "person.circle")
                 }

@@ -53,7 +53,6 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseAuth
-import UserNotifications
 
 class ToDoListViewViewModel: ObservableObject {
     @Published var items: [ToDoListItem] = []  // This needs to be fetched appropriately
@@ -104,25 +103,4 @@ class ToDoListViewViewModel: ObservableObject {
             .document(id).delete()
     }
     
-//    func scheduleNotification(for item: ToDoListItem) {
-//        let content = UNMutableNotificationContent()
-//        content.title = "Task Reminder"
-//        content.body = "Don't forget: \(item.title) is due!"
-//        content.sound = UNNotificationSound.default
-//
-//        let dueDate = Date(timeIntervalSince1970: item.dueDate)
-//        let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: dueDate)
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-//
-//        let request = UNNotificationRequest(identifier: item.id, content: content, trigger: trigger)
-//
-//        UNUserNotificationCenter.current().add(request) { error in
-//            if let error = error {
-//                print("Error scheduling notification: \(error)")
-//            } else {
-//                print("Notification scheduled for \(triggerDate) with ID: \(item.id)")
-//            }
-//        }
-//    }
-
 }

@@ -13,6 +13,8 @@ class NewItemViewViewModel: ObservableObject {
     @Published var title = ""
     @Published var dueDate = Date()
     @Published var showAlert = false
+    @Published var isNotificationScheduled = false
+
     
     var id: String? // Identifier for existing items
     
@@ -29,6 +31,7 @@ class NewItemViewViewModel: ObservableObject {
         }
         
         // create model
+        let myNotification = MyLocalNotification()
         let newId = id ?? UUID().uuidString
         let newTask = ToDoListItem(
             id: newId,
@@ -44,7 +47,14 @@ class NewItemViewViewModel: ObservableObject {
             .document(uId)
             .collection("todos")
             .document(newId)
-            .setData(newTask.asDictionary())
+            .setData(newTask.asDictionary()) { error in
+                if let error = error {
+                    print("Error saving to Firestore: \(error.localizedDescription)")
+                } else {
+                    // Schedule local notification
+                    myNotification.scheduleLocalNotification(for: newTask)
+                }
+            }
     }
     
     var onSave: Bool {
