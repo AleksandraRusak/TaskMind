@@ -15,6 +15,8 @@ struct ProfileView: View {
     @State private var presentActionScheet = false
     @State private var presentCamera = false
     @State private var showDeleteAlert = false
+    @State private var showErrorAlert = false
+    @State private var errorMessage = ""
     @Binding var showLoginView: Bool
 
     
@@ -117,7 +119,8 @@ struct ProfileView: View {
                                                                                 showLoginView = true
                                                                             }
                                                                                         catch {
-                                                                                        print(error)
+                                                                                            errorMessage = error.localizedDescription
+                                                                                                                                            showErrorAlert = true
                                                                                                     }
                                                                                                 }
                                                                     }
@@ -125,6 +128,11 @@ struct ProfileView: View {
                                                                 } message: {
                                                                     Text("This action cannot be undone.")
                                                                 }
+                                                                .alert("Error", isPresented: $showErrorAlert) {
+                                                                                                    Button("OK", role: .cancel) { }
+                                                                                                } message: {
+                                                                                                    Text(errorMessage)
+                                                                                                }
                                                             }
                                                         }
                           
