@@ -17,7 +17,7 @@ struct ProfileView: View {
     @State private var showDeleteAlert = false
     @State private var showErrorAlert = false
     @State private var errorMessage = ""
-    @Binding var showLoginView: Bool
+    @State var showLoginView = LoginView()
 
     
     var body: some View {
@@ -116,7 +116,7 @@ struct ProfileView: View {
                                                                         Task {
                                                                             do {
                                                                                 try await viewModel.delete()
-                                                                                showLoginView = true
+                                                                        showLoginView
                                                                             }
                                                                                         catch {
                                                                                             errorMessage = error.localizedDescription
@@ -154,7 +154,7 @@ struct ProfileView_Previews: PreviewProvider {
     @State static var showLoginView = false  // Create a mock state
 
     static var previews: some View {
-        ProfileView(showLoginView: $showLoginView)  // Pass the binding
+        ProfileView()  // Pass the binding
     }
 }
 

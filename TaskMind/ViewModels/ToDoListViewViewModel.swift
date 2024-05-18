@@ -55,8 +55,9 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class ToDoListViewViewModel: ObservableObject {
-    @Published var items: [ToDoListItem] = []  // This needs to be fetched appropriately
+    @Published var items: [ToDoListItem] = []  // Incomplete items
     @Published var showingNewItemView = false
+    @Published var completedItems: [ToDoListItem] = []  // Completed items
 
     private let userId: String
     private var db = Firestore.firestore()
@@ -64,6 +65,7 @@ class ToDoListViewViewModel: ObservableObject {
     init(userId: String) {
         self.userId = userId
         fetchItems()
+        fetchCompletedItems()
     }
 
     func fetchItems() {
@@ -78,17 +80,31 @@ class ToDoListViewViewModel: ObservableObject {
             }
     }
     
+    func fetchCompletedItems() {
+        db.collection("users").document(userId).collection("todos")
+            .whereField("isDone", isEqualTo: true)  // Only fetch completed items
+            .addSnapshotListener { querySnapshot, error in
+                if let querySnapshot = querySnapshot {
+                    self.completedItems = querySnapshot.documents.compactMap { document in
+                        try? document.data(as: ToDoListItem.self)
+                    }
+                }
+            }
+    }
 
     func toggleIsDone(item: ToDoListItem) {
         guard let index = items.firstIndex(where: { $0.id == item.id }) else { return }
 
         // Optimistically update the UI
         items[index].isDone = true
-
-        // Delay the Firestore update
+        let itemCopy = items[index]
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.updateItemInFirestore(item: self.items[index])
-            self.items.remove(at: index)  // Remove from the local array after 2 seconds
+            self.updateItemInFirestore(item: itemCopy)
+            DispatchQueue.main.async {
+                self.items.remove(at: index)
+                self.completedItems.append(itemCopy)
+            }
         }
     }
 
@@ -102,5 +118,4 @@ class ToDoListViewViewModel: ObservableObject {
         db.collection("users").document(userId).collection("todos")
             .document(id).delete()
     }
-    
 }

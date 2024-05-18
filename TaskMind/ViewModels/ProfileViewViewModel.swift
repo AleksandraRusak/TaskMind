@@ -120,7 +120,7 @@ class ProfileViewViewModel: ObservableObject {
             try await userRef.delete()
 
             // Step 2: Delete profile image from Storage
-            try await storageRef.delete()
+//            try await storageRef.delete()
 
             // Step 3: Delete the user from Firebase Authentication
             try await user.delete()

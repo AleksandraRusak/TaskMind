@@ -150,8 +150,7 @@ struct ContentView: View {
                 .tabItem{
                     Label("History", systemImage: "checklist.checked")
                 }
-            //ProfileView()
-            ProfileView(showLoginView: $showLoginView)
+            ProfileView()
                 .tabItem{
                     Label("Profile", systemImage: "person.circle")
                 }

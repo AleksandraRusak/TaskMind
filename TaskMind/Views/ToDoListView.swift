@@ -171,14 +171,14 @@ struct ToDoListView: View {
     //}
     
     private var filteredItems: [ToDoListItem] {
-        if searchText.isEmpty {
-            return items.filter { !$0.isDone }.sorted(by: { $0.dueDate < $1.dueDate })
-        } else {
-            return items.filter { !$0.isDone && $0.title.localizedCaseInsensitiveContains(searchText) }
-                .sorted(by: { $0.dueDate < $1.dueDate })
-        }
-    }
-}
+           if searchText.isEmpty {
+               return viewModel.items.sorted(by: { $0.dueDate > $1.dueDate })
+           } else {
+               return viewModel.items.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
+                           .sorted(by: { $0.dueDate > $1.dueDate })
+           }
+       }
+   }
     
     struct ToDoListView_Previews: PreviewProvider {
         static var previews: some View {
