@@ -50,18 +50,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
 }
 
-//import SwiftUI
-//import FirebaseCore
-//
-//@main
-//struct TaskMindApp: App {
-//    init() {
-//        FirebaseApp.configure()
-//    }
-//    
-//    var body: some Scene {
-//        WindowGroup {
-//            ContentView()
-//        }
-//    }
-//}

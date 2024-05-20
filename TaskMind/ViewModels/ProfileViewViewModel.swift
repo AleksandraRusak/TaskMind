@@ -116,16 +116,17 @@ class ProfileViewViewModel: ObservableObject {
         let userRef = db.collection("users").document(userId)
 
         do {
-            // Step 1: Delete user data from Firestore
+            // Delete user data from Firestore
             try await userRef.delete()
 
-            // Step 2: Delete profile image from Storage
-//            try await storageRef.delete()
+            // Delete profile image from Storage
+            // if there is no uploaded photo, it will show an error as its nothing to delete from Storage
+           try await storageRef.delete()
 
-            // Step 3: Delete the user from Firebase Authentication
+            // Delete the user from Firebase Auth
             try await user.delete()
         } catch {
-            throw error  // Propagate errors to the caller
+            throw error
         }
     }
 }

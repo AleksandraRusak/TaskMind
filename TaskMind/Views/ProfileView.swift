@@ -23,14 +23,6 @@ struct ProfileView: View {
     var body: some View {
         GeometryReader { geometry in
             NavigationStack {
-//                extra button to Logout
-//                TODO - fix delete account
-//                TODO - settings to allow notifications
-                Button("Log out", action: {
-                viewModel.logOut()
-            })
-                
-                
                 VStack {
                     if let user = viewModel.user {
                         Group {
@@ -116,6 +108,7 @@ struct ProfileView: View {
                                                                         Task {
                                                                             do {
                                                                                 try await viewModel.delete()
+                                                                           
                                                                         showLoginView
                                                                             }
                                                                                         catch {
@@ -147,14 +140,14 @@ struct ProfileView: View {
                  viewModel.fetchUser()
              }.frame(width: geometry.size.width, height: geometry.size.height)
            }
-        }
+    }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     @State static var showLoginView = false  // Create a mock state
 
     static var previews: some View {
-        ProfileView()  // Pass the binding
+        ProfileView() 
     }
 }
 

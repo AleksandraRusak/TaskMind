@@ -42,7 +42,7 @@ class CompletedTasksViewModel: ObservableObject {
                 print("Error deleting task: \(error)")
                 return
             }
-            // Optionally remove the item from the local array, although the SnapshotListener should handle this.
+            // Optionally remove the item from the local array
         }
     }
 
