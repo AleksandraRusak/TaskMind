@@ -112,7 +112,7 @@ class ProfileViewViewModel: ObservableObject {
         let userId = user.uid // Directly assign since `uid` is non-optional
 
         let db = Firestore.firestore()
-        let storageRef = Storage.storage().reference().child("profile_images/\(userId).jpg")
+//        let storageRef = Storage.storage().reference().child("profile_images/\(userId).jpg")
         let userRef = db.collection("users").document(userId)
 
         do {
@@ -121,7 +121,7 @@ class ProfileViewViewModel: ObservableObject {
 
             // Delete profile image from Storage
             // if there is no uploaded photo, it will show an error as its nothing to delete from Storage
-           try await storageRef.delete()
+//           try await storageRef.delete()
 
             // Delete the user from Firebase Auth
             try await user.delete()

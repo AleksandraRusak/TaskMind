@@ -15,7 +15,7 @@ struct ContentView: View {
     @State private var showLoginView = false
     
     
-    let title = "TaskMind"
+    let title = "TaskMinder"
     private var initialDelays = [0.0, 0.018, 0.32, 0.35]
    
 
@@ -108,7 +108,7 @@ struct AnimatedTitleView: View {
         HStack(spacing: 0) {
             ForEach(0..<title.count, id: \.self) { index in
                 Text(String(title[title.index(title.startIndex, offsetBy: index)]))
-                    .font (.system(size: 70)) .bold()
+                    .font (.system(size: 60)) .bold()
                     .opacity(show ? 1 : 0)
                     .offset (y: show ? -30 : 30)
                     .animation(animationType.delay(Double(index) * delayStep + initialDelay), value: show)

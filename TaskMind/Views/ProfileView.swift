@@ -95,8 +95,8 @@ struct ProfileView: View {
                                 Button("Allow Notifications") {
                                     openAppSettings()
                                                                 }
-                                                Link("Privacy Policy", destination: URL(string: "https://www.freeprivacypolicy.com/live/5bb1a717-6917-4a08-a205-fd905ab23b06")!)
-                                                Link("Terms & Conditions", destination: URL(string: "https://www.freeprivacypolicy.com/live/45d9597b-7392-421a-a9cb-0a7e1444914a")!)
+                                                Link("Privacy Policy", destination: URL(string: "https://www.freeprivacypolicy.com/live/c00c4bbd-9bea-4761-8ae2-7a8098269923")!)
+                                                Link("Terms & Conditions", destination: URL(string: "https://www.freeprivacypolicy.com/live/e855ca1d-5a30-4914-8e0e-1903e6133753")!)
                                             }
                             Section {
                                 Button("Delete account") {
