@@ -108,25 +108,46 @@ class ProfileViewViewModel: ObservableObject {
         guard let user = Auth.auth().currentUser else {
             throw NSError(domain: "ProfileViewModel", code: 1, userInfo: [NSLocalizedDescriptionKey: "User not found"])
         }
-
+        
         let userId = user.uid // Directly assign since `uid` is non-optional
-
+        
         let db = Firestore.firestore()
-//        let storageRef = Storage.storage().reference().child("profile_images/\(userId).jpg")
+        let storageRef = Storage.storage().reference().child("profile_images/\(userId).jpg")
         let userRef = db.collection("users").document(userId)
-
+        
         do {
             // Delete user data from Firestore
             try await userRef.delete()
-
+            
             // Delete profile image from Storage
-            // if there is no uploaded photo, it will show an error as its nothing to delete from Storage
-//           try await storageRef.delete()
-
+            // extra do-catch för felhantering
+            do {
+                try await storageRef.delete()
+            } catch let error as NSError {
+                if error.domain == StorageErrorDomain && error.code == StorageErrorCode.objectNotFound.rawValue {
+                    // Ignorera felet om objektet inte finns
+                    print("Profilbild hittades inte i lagringen, inget att radera.")
+                } else {
+                    throw error
+                }
+            }
+            
             // Delete the user from Firebase Auth
             try await user.delete()
+
         } catch {
             throw error
         }
     }
 }
+    
+//    App Store kräver att appar ska ge användare möjligheten att radera sitt konto. När jag försökte implementera denna funktion stötte jag på problemet att om en användare använder en standardprofilbild, finns det ingen bild att radera från lagringen, vilket hindrar borttagningen av kontot. Jag kommenterade denna del av koden, och nu går det att radera kontot och all data från databasen. Jag planerar att förbättra koden genom att lägga till felhantering för bildscenariot med ett extra do-catch-block.
+    
+//    För att förbättra koden och hantera fallet där det inte finns någon uppladdad bild att ta bort från Storage, jag tänker att lägga till felhantering specifikt för detta scenario.
+//    Separera felhantering för Storage deletion:
+//    Lägg till specifik hantering för att ignorera felet om bilden inte finns i Storage.
+
+//     har lagt till en inre do-catch block för att hantera raderingen av profilbilden från Storage.
+//    Om felkoden för objectNotFound kastas, loggar vi ett meddelande och fortsätter utan att kasta om felet.
+//    Om något annat fel uppstår under raderingen av profilbilden, kastas detta fel vidare.
+

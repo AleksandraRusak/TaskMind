@@ -13,7 +13,7 @@ public class MyLocalNotification {
     func scheduleLocalNotification(for item: ToDoListItem) {
         
         let content = UNMutableNotificationContent()
-        content.title = "TaskMind"
+        content.title = "TaskMinder"
         content.body = "Don't forget task: \(item.title) is due!"
         content.sound = UNNotificationSound.default
         content.badge = 1

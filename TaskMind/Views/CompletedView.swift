@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 struct CompletedView: View {
     @StateObject var viewModel: CompletedTasksViewModel
     @State private var searchText = ""
+    @State private var showDeleteAlert = false
 
     init(userId: String) {
         _viewModel = StateObject(wrappedValue: CompletedTasksViewModel(userId: userId))
@@ -35,6 +36,23 @@ struct CompletedView: View {
             .listStyle(PlainListStyle())
             .navigationTitle("Completed Tasks")
             .searchable(text: $searchText)
+            .toolbar {
+                            Button {
+                                showDeleteAlert = true
+                            } label: {
+                                Image(systemName: "trash")
+                                    .foregroundColor(Color.red)
+                            }
+                        }
+                        .alert("Are you sure you want to delete all completed tasks?", isPresented: $showDeleteAlert) {
+                            Button("Delete", role: .destructive) {
+                                viewModel.deleteAllCompletedTasks()
+                            }
+                            Button("Cancel", role: .cancel) { }
+                        } message: {
+                            Text("This action cannot be undone.")
+                        }
+
         }
     }
 }

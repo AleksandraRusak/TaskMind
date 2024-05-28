@@ -45,6 +45,21 @@ class CompletedTasksViewModel: ObservableObject {
             // Optionally remove the item from the local array
         }
     }
+    
+    func deleteAllCompletedTasks() {
+            let batch = db.batch()
+            completedItems.forEach { item in
+                let docRef = db.collection("users").document(userId).collection("todos").document(item.id)
+                batch.deleteDocument(docRef)
+            }
+            batch.commit { error in
+                if let error = error {
+                    print("Error deleting all completed tasks: \(error)")
+                } else {
+                    self.completedItems.removeAll()
+                }
+            }
+        }
 
 
     func filteredCompletedItems(searchText: String) -> [ToDoListItem] {
