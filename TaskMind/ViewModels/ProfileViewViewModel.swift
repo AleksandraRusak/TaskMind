@@ -141,13 +141,5 @@ class ProfileViewViewModel: ObservableObject {
     }
 }
     
-//    App Store kräver att appar ska ge användare möjligheten att radera sitt konto. När jag försökte implementera denna funktion stötte jag på problemet att om en användare använder en standardprofilbild, finns det ingen bild att radera från lagringen, vilket hindrar borttagningen av kontot. Jag kommenterade denna del av koden, och nu går det att radera kontot och all data från databasen. Jag planerar att förbättra koden genom att lägga till felhantering för bildscenariot med ett extra do-catch-block.
-    
-//    För att förbättra koden och hantera fallet där det inte finns någon uppladdad bild att ta bort från Storage, jag tänker att lägga till felhantering specifikt för detta scenario.
-//    Separera felhantering för Storage deletion:
-//    Lägg till specifik hantering för att ignorera felet om bilden inte finns i Storage.
-
-//     har lagt till en inre do-catch block för att hantera raderingen av profilbilden från Storage.
-//    Om felkoden för objectNotFound kastas, loggar vi ett meddelande och fortsätter utan att kasta om felet.
-//    Om något annat fel uppstår under raderingen av profilbilden, kastas detta fel vidare.
+//    App Store kräver att appar ska ge användare möjligheten att radera sitt konto. När jag försökte implementera denna funktion stötte jag på problemet att om en användare använder en standardprofilbild, finns det ingen bild att radera från Storage, vilket hindrar borttagningen av kontot. Jag förbättrade koden genom att lägga till felhantering för bildscenariot med ett extra do-catch-block. Om felkoden för objectNotFound kastas, loggar vi ett meddelande och fortsätter utan att kasta om felet. Om något annat fel uppstår under raderingen av profilbilden, kastas detta fel vidare.
 

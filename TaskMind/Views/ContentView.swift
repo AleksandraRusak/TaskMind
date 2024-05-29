@@ -130,4 +130,6 @@ struct AnimatedTitleView: View {
 
 
 // rus@gmail.com
+//  ale@gmail.com
+// alexa@gmail.com
 
